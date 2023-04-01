@@ -14,7 +14,7 @@ const presetList = [
     parent: null,
     permission: null,
     cacheable: true,
-    children:[
+    children: [
       {
         id: 1111,
         name: 'menu',
@@ -95,6 +95,31 @@ const presetList = [
     ]
   },
   {
+    id: 4,
+    name: 'exp4',
+    title: '软件测试成本估算实验',
+    target: '_self',
+    path: '/exp4',
+    component: '@/pages/exp4/Exp4.vue',
+    renderMenu: true,
+    parent: null,
+    permission: null,
+    cacheable: true,
+    children: [
+      {
+        id: 41,
+        name: 'exp4_group9',
+        title: 'Group9_软件测试成本估算实验',
+        target: '_self',
+        path: '/exp4/group9',
+        component: '@/pages/exp4/Exp4_group9',
+        renderMenu: true,
+        permission: null,
+        cacheable: true,
+      }
+    ]
+  },
+  {
     id: 6,
     name: 'exp6',
     title: '软件项目/产品的风险影响与评价实验',
@@ -120,17 +145,17 @@ const presetList = [
     ]
 
   },
-  
+
 ];
 
 function getMenuList() {
   const menuStr = localStorage.getItem('stepin-menu');
   let menuList = [];
   // if (!menuStr) {
-    menuList = presetList;
-    localStorage.setItem('stepin-menu', JSON.stringify(menuList));
+  menuList = presetList;
+  localStorage.setItem('stepin-menu', JSON.stringify(menuList));
   // } else {
-    // menuList = JSON.parse(menuStr);
+  // menuList = JSON.parse(menuStr);
   // }
   return menuList;
 }
@@ -149,7 +174,7 @@ function saveMenu(menu) {
   localStorage.setItem('stepin-menu', JSON.stringify(menuList));
 }
 
-Mock.mock('api/menu', 'get', ({}) => {
+Mock.mock('api/menu', 'get', ({ }) => {
   let menuList = getMenuList();
   const menuMap = menuList.reduce((p, c) => {
     p[c.name] = c;
