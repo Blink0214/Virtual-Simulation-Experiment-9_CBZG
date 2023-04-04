@@ -9,6 +9,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ABackTop: typeof import('ant-design-vue/es')['BackTop']
     ABadge: typeof import('ant-design-vue/es')['Badge']
     AButton: typeof import('ant-design-vue/es')['Button']
     ACol: typeof import('ant-design-vue/es')['Col']
@@ -26,7 +27,6 @@ declare module '@vue/runtime-core' {
     ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
     ALayoutFooter: typeof import('ant-design-vue/es')['LayoutFooter']
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
-    ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
     AModal: typeof import('ant-design-vue/es')['Modal']
     APagination: typeof import('ant-design-vue/es')['Pagination']
     APopconfirm: typeof import('ant-design-vue/es')['Popconfirm']
@@ -41,14 +41,12 @@ declare module '@vue/runtime-core' {
     AStatistic: typeof import('ant-design-vue/es')['Statistic']
     ASwitch: typeof import('ant-design-vue/es')['Switch']
     ATable: typeof import('ant-design-vue/es')['Table']
-    ATableSummary: typeof import('ant-design-vue/es')['TableSummary']
-    ATableSummaryCell: typeof import('ant-design-vue/es')['TableSummaryCell']
-    ATableSummaryRow: typeof import('ant-design-vue/es')['TableSummaryRow']
     ATabPane: typeof import('ant-design-vue/es')['TabPane']
     ATabs: typeof import('ant-design-vue/es')['Tabs']
     ATreeSelect: typeof import('ant-design-vue/es')['TreeSelect']
     ATypographyLink: typeof import('ant-design-vue/es')['TypographyLink']
     ATypographyText: typeof import('ant-design-vue/es')['TypographyText']
+    ATypographyTitle: typeof import('ant-design-vue/es')['TypographyTitle']
     AvatarList: typeof import('./src/components/avatar/AvatarList.vue')['default']
     BarChart: typeof import('./src/components/chart/BarChart.vue')['default']
     BlankView: typeof import('./src/components/layout/BlankView.vue')['default']
