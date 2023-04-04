@@ -123,7 +123,7 @@
                        <el-input v-model="scope.row.C" placeholder="" />
                      </template>
                 </el-table-column>
-            </el-table-column>
+            </el-table-column>x
         </el-table-column>
         <el-table-column label="平均">
             <el-table-column label="计数">
