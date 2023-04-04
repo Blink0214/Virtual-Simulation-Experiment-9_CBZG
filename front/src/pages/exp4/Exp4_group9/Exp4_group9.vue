@@ -1,14 +1,13 @@
 <template>
-  <div style="width:70%;text-align: center;margin: 0 auto;">
-    <a-row style="border: 1px solid lightgray;height:50px;line-height: 50px;" justify="space-around" align="middle">
-      <a-col :span="19" style="border-right: 1px solid lightgray;margin-right: -18px;font-size: large;font-weight: 600;">软件测试工具成本</a-col>
-      <a-col :span="3" style="font-size: large;font-weight: 600;">总计</a-col>
+  <div style="width:80%;text-align: center;margin: 0 auto" >
+    <a-row style="border: 1px solid lightgray;height:50px; border-radius:10px 10px 0px 0px;line-height: 50px;" justify="space-around" align="middle">
+      <a-col :span="24" style="font-weight: 600;">步骤四：软件测试工具成本</a-col>
     </a-row>
     <a-row style="border: 1px solid lightgray;border-top:none;" justify="space-around" align="middle">
-      <a-col :span="1">OT</a-col>
-      <a-col :span="18">
+      <a-col :span="3">自有工具成本(OT)</a-col>
+      <a-col :span="15">
         <a-descriptions :model="form" bordered>
-          <a-descriptions-item label="固定资产应计折旧额" :span="3" style="width:72%;">
+          <a-descriptions-item label="固定资产应计折旧额" :span="3" style="width:65%;">
             <a-input-number v-model:value="form.depreciation" :min="0" />&emsp;&emsp;&nbsp;元
           </a-descriptions-item>
           <a-descriptions-item label="固定资产预计使用年限" :span="3">
@@ -22,15 +21,16 @@
           </a-descriptions-item>
         </a-descriptions>
       </a-col>
-      <a-col :span="3">
-        <a-statistic :value=OT />
-      </a-col>元
+      <a-col :span="4">
+        <a-statistic title="总计" :value=OT :value-style="{ fontSize:'20px'}" :precision="2" suffix="元">
+        </a-statistic>
+      </a-col>
     </a-row>
     <a-row style="border: 1px solid lightgray;border-top:none;" justify="space-around" align="middle">
-      <a-col :span="1">RT</a-col>
-      <a-col :span="18">
+      <a-col :span="3">租借工具成本(RT)</a-col>
+      <a-col :span="15">
         <a-descriptions :model="form" bordered>
-          <a-descriptions-item label="租赁费用" :span="3" style="width:72%;">
+          <a-descriptions-item label="租赁费用" :span="3" style="width:65%;">
             <a-input-number v-model:value="form.rentExpense" :min="0" />&emsp;元/月
           </a-descriptions-item>
           <a-descriptions-item label="租赁期限" :span="3">
@@ -38,12 +38,16 @@
           </a-descriptions-item>
         </a-descriptions>
       </a-col>
-      <a-col :span="3">
-        <a-statistic :value=RT />
-      </a-col>元
+      <a-col :span="4">
+        <a-statistic title="总计" :value=RT :value-style="{ fontSize:'20px'}" :precision="2" suffix="元">
+        </a-statistic>
+        
+      </a-col>
     </a-row>
-    <a-row style="border: 1px solid lightgray;border-top:none;height:50px;" justify="space-around" align="middle">
-      IC = OT + RT = {{ IC }}
+
+    <a-row style="border: 1px solid lightgray;border-top:none;height:100px; border-radius:0px 0px 10px 10px;" justify="space-around" align="middle">
+      <a-statistic title="软件测试工具成本(IC)=OT+RT" :precision="2"  :value-style="{ fontSize:'20px'}" :value=IC  suffix="元">
+        </a-statistic>
     </a-row>
   </div>
 
