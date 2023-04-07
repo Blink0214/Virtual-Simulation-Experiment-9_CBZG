@@ -3,6 +3,7 @@
     <a-layout-header class="my-layout-header">软件测试成本度量实验</a-layout-header>
     <div class="GBlink" @click="jumpToGB">参考国家标准</div>
     <a-layout-content class="my-layout-content">
+
       <!--第一步：计算软件测试的人工成本工作量-->
       <div>
         <a-typography-title :level="5">步骤一：软件测试的人工成本工作量计算</a-typography-title>
@@ -26,6 +27,7 @@
           （b）未调整的软件测试人工工作量：UW = {{TW}} + {{TW}} * {{SR_weight}} + {{TW}} * {{DR_weight}} = {{UW}}（人日）
         </a-row>
       </div>
+
       <!--第三步：计算软件测试的人工成本-->
       <div>
         <a-typography-title :level="5">步骤三：软件测试的人工成本计算</a-typography-title>
@@ -56,23 +58,18 @@
         <a-row style="border: 1px solid lightgray;height:50px; border-radius:10px 10px 0px 0px;line-height: 50px;" justify="space-around" align="middle">
           <a-col :span="24" style="font-weight: 600;">步骤四：软件测试工具成本</a-col>
         </a-row>
-        <a-row style="border: 1px solid lightgray;border-top:none;" justify="space-around" align="middle">
+        <a-row style="border: 1px solid lightgray;border-top:none;padding-top: 10px;" justify="space-around" align="middle">
           <a-col :span="3">
-            <a-row justify="space-around" align="middle">
-              自有工具成本(OT)
-            </a-row>
-            <a-row justify="space-around" align="middle">
-              <a-button class="editable-add-btn" style="width: 100px;" @click="handleAddOT">Add</a-button>
-            </a-row>
-            </a-col>
+            自有工具成本(OT)
+          </a-col>
           <a-col :span="16">
-            <a-row v-for="(item,index) in OTForm" style="border: 1px solid lightgray;border-top:none;" justify="space-around" align="middle">
+            <a-row v-for="(item,index) in OTForm" style="border: 1px solid lightgray;" justify="space-around" align="middle">
               <a-col :span="3"> 
                 <a-row justify="space-around" align="middle">
                   自有工具{{ index+1 }}
                 </a-row>
                 <a-row justify="space-around" align="middle">
-                  <a-button class="editable-add-btn" style="width: 70px;" @click="handleDeleteOT(index)">Delete</a-button>
+                  <a-button shape="circle" class="editable-add-btn" style="margin-top:5px" size=small danger @click="handleDeleteOT(index)"><minus-outlined /></a-button>
                 </a-row>
               </a-col>
               <a-col :span="21">
@@ -92,6 +89,9 @@
                 </a-descriptions>
               </a-col>
             </a-row>
+            <a-row justify="space-around" align="middle">
+              <a-button class="editable-add-btn" style="width: 100%;margin: 10px 0px 10px 0px;" @click="handleAddOT" ghost type="primary"><plus-outlined /></a-button>
+            </a-row>
           </a-col>
           <a-col :span="3">
             <a-statistic v-if="OT!=-1" title="总计" :value=OT :value-style="{ fontSize:'20px'}" :precision="2" suffix="元"></a-statistic>
@@ -107,23 +107,18 @@
             </a-statistic>
           </a-col>
         </a-row>
-        <a-row style="border: 1px solid lightgray;border-top:none;" justify="space-around" align="middle">
+        <a-row style="border: 1px solid lightgray;border-top:none;padding-top: 10px;" justify="space-around" align="middle">
           <a-col :span="3">
-            <a-row justify="space-around" align="middle">
-              租借工具成本(RT)
-            </a-row>
-            <a-row justify="space-around" align="middle">
-              <a-button class="editable-add-btn" style="width: 100px;" @click="handleAddRT">Add</a-button>
-            </a-row>
+            租借工具成本(RT)
           </a-col>
           <a-col :span="16">
-            <a-row v-for="(item,index) in RTForm" style="border: 1px solid lightgray;border-top:none;" justify="space-around" align="middle">
+            <a-row v-for="(item,index) in RTForm" style="border: 1px solid lightgray;" justify="space-around" align="middle">
               <a-col :span="3">
                 <a-row justify="space-around" align="middle">
                   租借工具{{ index+1 }}
                 </a-row>
                 <a-row justify="space-around" align="middle">
-                  <a-button class="editable-add-btn" style="width: 70px;" @click="handleDeleteRT(index)">Delete</a-button>
+                  <a-button shape="circle" class="editable-add-btn" style="margin-top:5px" size=small danger @click="handleDeleteRT(index)"><minus-outlined /></a-button>
                 </a-row>
               </a-col>
               <a-col :span="21">
@@ -136,6 +131,9 @@
                   </a-descriptions-item>
                 </a-descriptions>
               </a-col>
+            </a-row>
+            <a-row justify="space-around" align="middle">
+              <a-button class="editable-add-btn" style="width: 100%;margin: 10px 0px 10px 0px;" @click="handleAddRT" ghost type="primary"><plus-outlined /></a-button>
             </a-row>
           </a-col>
           <a-col :span="3">
