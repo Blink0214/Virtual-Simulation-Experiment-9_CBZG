@@ -104,7 +104,28 @@
       </div>
 
 
-
+      <!--第六步：计算软件测试成本-->
+      <div>
+        <a-typography-title :level="5">步骤六：软件测试成本计算</a-typography-title>
+        <a-row class="son-line" style="display: table-cell;vertical-align: middle;">
+          <a-typography-text>（1）计算公式：STC = DC + IDC </a-typography-text>
+            <a-popover title="说明：">
+              <template #content>
+                <p>STC —— 软件测试成本【元】</p>
+                <p>DC —— 直接成本【元】</p>
+                <p>IDC —— 间接成本,宜不超过直接成本的20%【元】</p>
+              </template>
+              <question-circle-outlined />
+            </a-popover>
+        </a-row>
+        <a-row class="son-line">（2）计算过程：</a-row>
+        <a-row class="son-line" style="padding-left:10px ;">（a）间接成本 IDC（宜不超过直接成本 DC 的20%）：
+            <a-input-number v-model:value="IDC" size="small" :min="0" :max="0.2*DC"/>（元）
+        </a-row>
+        <a-row class="son-line" style="padding-left:10px;">
+          （b）软件测试成本：STC = {{DC}} + {{IDC}} = {{STC}}（元）
+        </a-row>
+      </div>
 
 
     </a-layout-content>
@@ -127,29 +148,45 @@ export default defineComponent({
     const DF = ref<number>(2);//软件测试成本调整因子
     const S = ref<number>(0);//工作量单价
     const LC = ref<number>(0);//测试人工成本
+    const DC = ref<number>(0);//直接成本
+    const IDC = ref<number>(0);//间接成本
+    const STC = ref<number>(0);//软件测试成本
+
     
     const form = reactive({
-      depreciation: 1000000,
-      usefulLife: 5,
-      maintenanceCosts: 200000,
-      actualUsageTime: 5,
+      depreciation: 0,
+      usefulLife: 1,
+      maintenanceCosts: 0,
+      actualUsageTime: 1,
       rentExpense: 0,
       termOfLease: 0,
     });
 
+    //自有工具成本
     const OT = computed(() => {
-      return (
-        Math.round(((form.depreciation / form.usefulLife + form.maintenanceCosts) / 200) *
-        form.actualUsageTime)
-      );
+      if(!(Math.round(((form.depreciation / form.usefulLife + form.maintenanceCosts) / 200) *
+        form.actualUsageTime))){
+        return 0;
+      }
+      else{
+        return Math.round(((form.depreciation / form.usefulLife + form.maintenanceCosts) / 200) *
+        form.actualUsageTime);
+      }
     });
 
+    //租借工具成本
     const RT = computed(() => {
       return form.rentExpense * form.termOfLease;
     });
 
+    //测试工具成本
     const IC = computed(() => {
-      return OT.value + RT.value;
+      if(!(OT.value + RT.value)){
+        return 0;
+      }
+      else{
+        return OT.value + RT.value;
+      }
     });
 
     const calculate = (event: Event) => {
@@ -173,6 +210,9 @@ export default defineComponent({
       RT,
       IC,
       calculate,
+      DC,
+      IDC,
+      STC,
     };
   },
    computed: {
