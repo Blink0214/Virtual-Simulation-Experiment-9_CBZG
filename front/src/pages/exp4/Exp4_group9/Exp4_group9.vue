@@ -24,7 +24,7 @@
           <a-input-number id="inputTW" v-model:value="TW" size="small" :min="0" :max="100000" />（人日）
         </a-row>
         <a-row class="son-line" style="padding-left:10px ;">
-          （b）未调整的软件测试人工工作量：UW = {{TW}} + {{TW}} * {{SR_weight}} + {{TW}} * {{DR_weight}} = {{UW}}（人日）
+          （b）未调整的软件测试人工工作量：UW = TW + TW * 10% + TW *20% = {{TW}} + {{TW}} * {{SR_weight}} + {{TW}} * {{DR_weight}} = {{UW}}（人日）
         </a-row>
       </div>
 
@@ -195,15 +195,33 @@ export default defineComponent({
   name: 'Exp4_group9',
   setup() {
     const GBtestlink = "http://c.gb688.cn/bzgk/gb/showGb?type=online&hcno=19B82C39FB3B9DF0A35D28122C07B053";
-    const UW = ref<number>(0);//未调整的软件测试人工工作量
     const TW = ref<number>(0);//软件测试工作量
     const SR_weight = ref<number>(0.1);//产品说明评审工作量权重
     const DR_weight = ref<number>(0.2);//用户文档集评审工作量权重
-    const DF = ref<number>(2);//软件测试成本调整因子
     const S = ref<number>(0);//工作量单价
-    const LC = ref<number>(0);//测试人工成本
     const DC = ref<number>(0);//直接成本
     const IDC = ref<number>(0);//间接成本
+
+    //未调整的软件测试人工工作量
+    const UW = computed(() => {
+      var x = Math.round((TW.value + TW.value * SR_weight.value + TW.value * DR_weight.value) * 100) / 100;
+      return x;
+    });
+
+    //软件测试人工成本调整因子
+    const DF = computed(() => {
+      //修改这里
+      var x = 2;
+      return x;
+    });
+
+    //软件测试人工成本
+    const LC = computed(() => {
+      var x = Math.round((UW.value * DF.value * S.value) * 100) / 100;
+      return x;
+    });
+
+    
 
     //自有工具数组
     const OTForm: Ref<OTFormDataType[]> = ref([
@@ -318,14 +336,6 @@ export default defineComponent({
     };
   },
   computed: {
-    UW() { //根据TW值的变化实时更新UW
-      this.UW = this.TW + this.TW * this.SR_weight + this.TW * this.DR_weight;
-      return this.UW;
-    },
-    LC() { //根据UW，DF，S值的变化实时更新LC
-      this.LC = this.UW * this.DF * this.S;
-      return this.LC;
-    },
   },
   methods: {
     jumpToGB() {
@@ -345,6 +355,7 @@ export default defineComponent({
 .my-layout-header {
   text-align: center;
   font-size: large;
+  font-weight:bold;
 }
 // .my-layout-content{
 // }
