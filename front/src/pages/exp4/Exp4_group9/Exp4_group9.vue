@@ -252,7 +252,7 @@ export default defineComponent({
 
     //测试工具成本
     const IC = computed(() => {
-      if(!(OT.value + RT.value)){
+      if(!(OT.value + RT.value)||OT.value<0){
         return 0;
       }
       else{
