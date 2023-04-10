@@ -19,14 +19,99 @@
             <question-circle-outlined />
           </a-popover>
         </a-row>
+
         <a-row class="son-line">（2）计算过程：</a-row>
         <a-row class="son-line" style="padding-left:10px ;">（a）软件测试工作量TW：
           <a-input-number id="inputTW" v-model:value="TW" size="small" :min="0" :max="100000" />（人日）
         </a-row>
         <a-row class="son-line" style="padding-left:10px ;">
-          （b）未调整的软件测试人工工作量：UW = TW + TW * 10% + TW *20% = {{ TW }} + {{ TW }} * {{ SR_weight }} + {{ TW }} * {{ DR_weight }} =
+          （b）未调整的软件测试人工工作量：UW = TW + TW * 10% + TW *20% = {{ TW }} + {{ TW }} * {{ SR_weight }} + {{ TW }} * {{ DR_weight
+          }} =
           {{ UW }}（人日）
         </a-row>
+      </div>
+
+      <!--第二步：计算软件测试成本调整因子-->
+      <div>
+        <a-typography-title :level="5">步骤二：软件测试成本调整因子计算</a-typography-title>
+        <a-row class="son-line" style="display: table-cell;vertical-align: middle;">
+          <a-typography-text>（1）计算公式：DF = C * I * R * U * X * A * ( 1 + n * Tr ) </a-typography-text>
+          <a-popover title="说明：">
+            <template #content>
+              <p>DF ———软件测试成本调整因子; </p>
+              <p>C ———软件复杂性调整因子,取值范围1.0~1.5; </p>
+              <p>I ———软件完整性调整因子,取值范围1.0~1.8;</p>
+              <p>R ———测试风险调整因子,取值范围1.0~1.5; </p>
+              <p>U ———加急测试调整因子,取值范围1.0~3.0; </p>
+              <p>X ———现场测试调整因子,取值范围1.0~1.3; </p>
+              <p>A ———评测机构资质调整因子,取值范围1.0~1.2; </p>
+              <p>Tr ———回归测试调整因子,取值范围0.6~0.8; </p>
+              <p>n ———回归测试次数</p>
+            </template>
+            <question-circle-outlined />
+          </a-popover>
+        </a-row>
+
+        <a-row class="son-line">（2）计算过程：</a-row>
+        <a-row class="son-line" style="padding-left:10px ;">（a）选择调整因子和回归测试次数取值</a-row>
+        <a-row class="son-line" style="padding-left:10px ;">（b）根据计算公式得到DF的值</a-row>
+
+
+
+        <div style="width:80%;text-align: center;margin: 0 auto">
+
+          <a-row style="border: 1px solid lightgray;height:50px; border-radius:10px 10px 0px 0px;line-height: 50px;"
+            justify="space-around" align="middle">
+            <a-col :span="24" style="font-weight: 600;">软件成本调整因子</a-col>
+          </a-row>
+
+          <a-row style="border: 1px solid lightgray;border-top:none;" justify="space-around" align="middle">
+            <a-col :span="4">调整因子</a-col>
+            <a-col :span="20">
+              <a-descriptions :model="form" bordered>
+                <a-descriptions-item label="软件复杂性调整因子 C (1.0~1.5)" :span="3" style="width:65%;">
+                  <a-input-number v-model:value="form.valueC" :min="1.0" :max="1.5" :step="0.1" />&emsp;&emsp;&nbsp;
+                </a-descriptions-item>
+                <a-descriptions-item label="软件完整性调整因子 I (1.0~1.8)" :span="3">
+                  <a-input-number v-model:value="form.valueI" :min="1.0" :max="1.8" :step="0.1" />&emsp;&emsp;&nbsp;
+                </a-descriptions-item>
+                <a-descriptions-item label="测试风险调整因子 R (1.0~1.5)" :span="3">
+                  <a-input-number v-model:value="form.valueR" :min="1.0" :max="1.5" :step="0.1" />&emsp;&emsp;&nbsp;
+                </a-descriptions-item>
+                <a-descriptions-item label="加急测试调整因子 U (1.0~3.0)" :span="3">
+                  <a-input-number v-model:value="form.valueU" :min="1.0" :max="3.0" :step="0.1" />&emsp;&emsp;&nbsp;
+                </a-descriptions-item>
+                <a-descriptions-item label="现场测试调整因子 X (1.0~1.3)" :span="3">
+                  <a-input-number v-model:value="form.valueX" :min="1.0" :max="1.3" :step="0.1" />&emsp;&emsp;&nbsp;
+                </a-descriptions-item>
+                <a-descriptions-item label="评测机构资质调整因子 A (1.0~1.2)" :span="3">
+                  <a-input-number v-model:value="form.valueA" :min="1.0" :max="1.2" :step="0.1" />&emsp;&emsp;&nbsp;
+                </a-descriptions-item>
+                <a-descriptions-item label="回归测试调整因子 T (0.6~0.8)" :span="3">
+                  <a-input-number v-model:value="form.valueT" :min="0.6" :max="0.8" :step="0.1" />&emsp;&emsp;&nbsp;
+                </a-descriptions-item>
+              </a-descriptions>
+            </a-col>
+          </a-row>
+
+          <a-row style="border: 1px solid lightgray;border-top:none;" justify="space-around" align="middle">
+            <a-col :span="4">回归测试次数</a-col>
+            <a-col :span="20">
+              <a-descriptions :model="form" bordered>
+                <a-descriptions-item label="回归测试次数 n" :span="3" style="width:65%;">
+                  <a-input-number v-model:value="form.valueN" :min="0" :step="1" />&emsp;&emsp;&nbsp;
+                </a-descriptions-item>
+              </a-descriptions>
+            </a-col>
+          </a-row>
+
+          <a-row style="border: 1px solid lightgray;border-top:none;height:100px; border-radius:0px 0px 10px 10px;"
+            justify="space-around" align="middle">
+            <a-statistic title="软件测试成本调整因子(DF)=DF =C*I*R*U*X*A*(1+n*Tr)" :precision="2"
+              :value-style="{ fontSize: '20px' }" :value=DF>
+            </a-statistic>
+          </a-row>
+        </div>
       </div>
 
       <!--第三步：计算软件测试的人工成本-->
@@ -204,7 +289,7 @@
         </a-row>
         <a-row class="son-line">（2）计算过程：</a-row>
         <a-row class="son-line" style="padding-left:10px ;">（a）测试环境成本 EC（宜不超过测试人工成本 LC 的20%）：
-          <a-input-number v-model:value="EC" size="small"  :min="0" :max="(0.2*LC).toFixed(2)" />（元）
+          <a-input-number v-model:value="EC" size="small" :min="0" :max="(0.2 * LC).toFixed(2)" />（元）
         </a-row>
         <a-row class="son-line" style="padding-left:10px;">
           （b）软件测试直接成本：DC = {{ LC }} + {{ EC }} +{{ IC }} = {{ DC }}（元）
@@ -227,7 +312,7 @@
         </a-row>
         <a-row class="son-line">（2）计算过程：</a-row>
         <a-row class="son-line" style="padding-left:10px ;">（a）间接成本 IDC（宜不超过直接成本 DC 的20%）：
-          <a-input-number v-model:value="IDC" size="small"  :min="0" :max="(0.2*DC).toFixed(2)" />（元）
+          <a-input-number v-model:value="IDC" size="small" :min="0" :max="(0.2 * DC).toFixed(2)" />（元）
         </a-row>
         <a-row class="son-line" style="padding-left:10px;">
           （b）软件测试成本：STC = {{ DC }} + {{ IDC }} = {{ STC }}（元）
@@ -269,6 +354,24 @@ export default defineComponent({
     const EC = ref<number>(0);//测试环境成本
     const IDC = ref<number>(0);//间接成本
 
+    const form = reactive({
+
+      valueC: 1.0,
+      valueI: 1.0,
+      valueR: 1.0,
+      valueU: 1.0,
+      valueX: 1.0,
+      valueA: 1.0,
+      valueT: 0.6,
+      valueN: 1,
+    });
+
+    // const DF = computed(() => {
+    //       return form.valueC*form.valueI*form.valueR*form.valueU*form.valueX*form.valueA*(1+form.valueN*form.valueT);
+    //     });
+
+
+
     //未调整的软件测试人工工作量
     const UW = computed(() => {
       var x = Math.round((TW.value + TW.value * SR_weight.value + TW.value * DR_weight.value) * 100) / 100;
@@ -278,9 +381,14 @@ export default defineComponent({
     //软件测试人工成本调整因子
     const DF = computed(() => {
       //修改这里
-      var x = 2;
+      var x = form.valueC * form.valueI * form.valueR * form.valueU * form.valueX * form.valueA * (1 + form.valueN * form.valueT);
       return x;
     });
+
+    const calculate = (event: Event) => {
+      event.preventDefault();
+      console.log('DF', DF.value);
+    };
 
     //软件测试人工成本
     const LC = computed(() => {
@@ -390,7 +498,9 @@ export default defineComponent({
       TW,
       SR_weight,
       DR_weight,
+      form,
       DF,
+      calculate,
       S,
       LC,
       OTForm,
@@ -442,4 +552,5 @@ export default defineComponent({
 
 .son-line {
   line-height: 30px;
-}</style>
+}
+</style>
