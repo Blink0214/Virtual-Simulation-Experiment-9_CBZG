@@ -1,7 +1,7 @@
 <template>
   <a-layout style="background-color:white;">
     <a-layout-header class="my-layout-header">软件测试成本度量实验</a-layout-header>
-    <div class="GBlink" @click="jumpToGB">参考国家标准</div>
+    <div class="GBlink" @click="jumpToGB">点击查看软件测试成本度量规范（国标）</div>
     <a-layout-content class="my-layout-content">
 
       <!--第一步：计算软件测试的人工成本工作量-->
@@ -13,8 +13,8 @@
             <template #content>
               <p>UW —— 未调整的软件测试人工工作量【人日】</p>
               <p>TW —— 软件测试工作量【人日】</p>
-              <p>SR —— 产品说明评审工作量【人日】</p>
-              <p>DR —— 用户文档集评审工作量【人日】</p>
+              <p>SR —— 产品说明评审工作量【人日】, SR=TW*10%</p>
+              <p>DR —— 用户文档集评审工作量【人日】, DR=TW*20%</p>
             </template>
             <question-circle-outlined />
           </a-popover>
@@ -25,9 +25,7 @@
           <a-input-number id="inputTW" v-model:value="TW" size="small" :min="0" :max="100000" />（人日）
         </a-row>
         <a-row class="son-line" style="padding-left:10px ;">
-          （b）未调整的软件测试人工工作量：UW = TW + TW * 10% + TW *20% = {{ TW }} + {{ TW }} * {{ SR_weight }} + {{ TW }} * {{ DR_weight
-          }} =
-          {{ UW }}（人日）
+          （b）未调整的软件测试人工工作量：UW = TW + TW * 10% + TW *20% = {{ TW }} + {{ TW }} * {{ SR_weight }} + {{ TW }} * {{ DR_weight}} = {{ UW }}（人日）
         </a-row>
       </div>
 
@@ -38,15 +36,15 @@
           <a-typography-text>（1）计算公式：DF = C * I * R * U * X * A * ( 1 + n * Tr ) </a-typography-text>
           <a-popover title="说明：">
             <template #content>
-              <p>DF ———软件测试成本调整因子; </p>
-              <p>C ———软件复杂性调整因子,取值范围1.0~1.5; </p>
-              <p>I ———软件完整性调整因子,取值范围1.0~1.8;</p>
-              <p>R ———测试风险调整因子,取值范围1.0~1.5; </p>
-              <p>U ———加急测试调整因子,取值范围1.0~3.0; </p>
-              <p>X ———现场测试调整因子,取值范围1.0~1.3; </p>
-              <p>A ———评测机构资质调整因子,取值范围1.0~1.2; </p>
-              <p>Tr ———回归测试调整因子,取值范围0.6~0.8; </p>
-              <p>n ———回归测试次数</p>
+              <p>DF —— 软件测试成本调整因子; </p>
+              <p>C —— 软件复杂性调整因子,取值范围1.0~1.5; </p>
+              <p>I —— 软件完整性调整因子,取值范围1.0~1.8;</p>
+              <p>R —— 测试风险调整因子,取值范围1.0~1.5; </p>
+              <p>U —— 加急测试调整因子,取值范围1.0~3.0; </p>
+              <p>X —— 现场测试调整因子,取值范围1.0~1.3; </p>
+              <p>A —— 评测机构资质调整因子,取值范围1.0~1.2; </p>
+              <p>Tr —— 回归测试调整因子,取值范围0.6~0.8; </p>
+              <p>n —— 回归测试次数</p>
             </template>
             <question-circle-outlined />
           </a-popover>
@@ -62,7 +60,7 @@
 
           <a-row style="border: 1px solid lightgray;height:50px; border-radius:10px 10px 0px 0px;line-height: 50px;"
             justify="space-around" align="middle">
-            <a-col :span="24" style="font-weight: 600;">软件成本调整因子</a-col>
+            <a-col :span="24" style="font-weight: 600;">软件测试成本调整因子</a-col>
           </a-row>
 
           <a-row style="border: 1px solid lightgray;border-top:none;" justify="space-around" align="middle">
@@ -149,12 +147,12 @@
       OT=(depreciation/usefulLife + maintenanceCosts)/200 * actualUsageTime-->
       <a-typography-title :level="5">步骤四：软件测试的工具成本计算</a-typography-title>
       <a-row class="son-line" style="display: table-cell;vertical-align: middle;">
-        <a-typography-text>（1）计算公式：IC =OT +RT </a-typography-text>
+        <a-typography-text>（1）计算公式：IC = OT + RT </a-typography-text>
         <a-popover title="说明：">
           <template #content>
-            <p>IC ———测试工具成本【元】</p>
-            <p>OT———自有工具成本【元】</p>
-            <p>RT———租借工具成本【元】</p>
+            <p>IC —— 测试工具成本【元】</p>
+            <p>OT —— 自有工具成本【元】</p>
+            <p>RT —— 租借工具成本【元】</p>
           </template>
           <question-circle-outlined />
         </a-popover>
@@ -166,7 +164,7 @@
       <div style="width:80%;text-align: center;margin: 0 auto">
         <a-row style="border: 1px solid lightgray;height:50px; border-radius:10px 10px 0px 0px;line-height: 50px;"
           justify="space-around" align="middle">
-          <a-col :span="24" style="font-weight: 600;">步骤四：软件测试工具成本</a-col>
+          <a-col :span="24" style="font-weight: 600;">软件测试工具成本</a-col>
         </a-row>
         <a-row style="border: 1px solid lightgray;border-top:none;padding-top: 10px;" justify="space-around"
           align="middle">
@@ -276,13 +274,13 @@
       <div>
         <a-typography-title :level="5">步骤五：软件测试直接成本计算</a-typography-title>
         <a-row class="son-line" style="display: table-cell;vertical-align: middle;">
-          <a-typography-text>（1）计算公式：DC =LC +EC +IC </a-typography-text>
+          <a-typography-text>（1）计算公式：DC = LC + EC + IC </a-typography-text>
           <a-popover title="说明：">
             <template #content>
-              <p>DC ———直接成本【元】</p>
-              <p>LC ———测试人工成本【元】</p>
-              <p>EC ———测试环境成本,宜不超过软件测试人工成本的20%【元】</p>
-              <p>IC ———测试工具成本【元】</p>
+              <p>DC —— 直接成本【元】</p>
+              <p>LC —— 测试人工成本【元】</p>
+              <p>EC —— 测试环境成本,宜不超过软件测试人工成本的20%【元】</p>
+              <p>IC —— 测试工具成本【元】</p>
             </template>
             <question-circle-outlined />
           </a-popover>
@@ -292,7 +290,7 @@
           <a-input-number v-model:value="EC" size="small" :min="0" :max="(0.2 * LC).toFixed(2)" />（元）
         </a-row>
         <a-row class="son-line" style="padding-left:10px;">
-          （b）软件测试直接成本：DC = {{ LC }} + {{ EC }} +{{ IC }} = {{ DC }}（元）
+          （b）软件测试直接成本：DC = {{ LC }} + {{ EC }} + {{ IC }} = {{ DC }}（元）
         </a-row>
       </div>
 
