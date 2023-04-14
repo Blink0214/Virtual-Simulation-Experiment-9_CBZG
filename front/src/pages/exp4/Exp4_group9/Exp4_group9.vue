@@ -3,14 +3,33 @@
 
     <a-layout-header class="my-layout-header">软件测试成本度量实验</a-layout-header>
     <div class="GBlink" @click="jumpToGB">软件测试成本度量规范（国标）</div>
+
+    <a-config-provider :locale="locale">
+      <p style="line-height:200%;">
+        课程名称：软件工程经济学<br>
+        课号：420279<br>
+        实验项目名称：软件测试成本度量实验<br>
+        实验时间：<a-date-picker v-model:value="experimentdate" style="width:150px;padding-left:3px;padding-right:3px;"
+          placeholder="点击选择实验时间" /><br>
+        实验报告人： <a-input v-model:value="reportername" placeholder="点击输入报告人姓名" size="small" style="width:150px ;"></a-input>
+      </p>
+    </a-config-provider>
+
     <a-typography-title :level="3">一、实验目的</a-typography-title>
+
+    <div style="background-color: white;font-size:16px">
+      <p>&emsp;&emsp;1.理解国家标准《软件测试成本度量规范》中软件测试成本度量原理，通过实验操作，掌握软件测试成本度量过程。</p>
+      <p>&emsp;&emsp;2.以小组为单位，根据本小组“软件工程管理与经济”课程设计项目架构及组件等设计成果，
+        使用《软件测试成本度量规范》中的方法，估算该项目的测试成本。</p>
+      <p>&emsp;&emsp;3.本实验为课内设计性实验项目，实验学时 1 学时，完成实验报告 1 学时。</p>
+    </div>
 
     <br>
     <a-typography-title :level="3">二、实验原理</a-typography-title>
     <div>
       <a-collapse v-model:activeKey="activeKey1" :bordered="false" style="width:99%">
         <!-- 1.软件测试成本构成 -->
-        <a-collapse-panel  key="1" :show-arrow="false" style="background-color: white;font-size:16px">
+        <a-collapse-panel key="1" :show-arrow="false" style="background-color: white;font-size:16px">
           <template #header>
             <a-typography-title style="margin-bottom: 0" :level="4">1. 软件测试成本构成</a-typography-title>
           </template>
@@ -25,7 +44,9 @@
           </div>
           <div>
             <h4 style="font-weight:600;">1.1.2 测试人工成本</h4>
-            <p>&emsp;&emsp;测试人工成本包括测试项目组成员的工资、奖金、福利等人力资源费用。其中，项目组成员包括参与该项目测试过程的所有测试或支持人员，如项目经理、需求分析人员、设计人员、测试人员、部署人员、质量保证人员、配置管理人员等。对于非全职投入该项目测试工作的人员，按照项目工作量所占其总工作量比例折算其人力资源费用。测试人工成本由产品说明评审、用户文档集评审和软件测试3部分组成。</p>
+            <p>
+              &emsp;&emsp;测试人工成本包括测试项目组成员的工资、奖金、福利等人力资源费用。其中，项目组成员包括参与该项目测试过程的所有测试或支持人员，如项目经理、需求分析人员、设计人员、测试人员、部署人员、质量保证人员、配置管理人员等。对于非全职投入该项目测试工作的人员，按照项目工作量所占其总工作量比例折算其人力资源费用。测试人工成本由产品说明评审、用户文档集评审和软件测试3部分组成。
+            </p>
             <p>&emsp;&emsp;1）产品说明评审：对软件产品说明进行评审，应按照 GB/T25000.51—2010对产品说明的可用性、内容、标识与标示等方面进行评审。</p>
             <p>&emsp;&emsp;2）用户文档集评审：对用户文档集进行评审，应按照 GB/T25000.51—2010对用户文档集的完备性、正确性和一致性等方面进行评审。</p>
             <p>&emsp;&emsp;3）软件测试</p>
@@ -41,8 +62,10 @@
             <p>&emsp;&emsp;&emsp;&emsp;● 测试执行：依据测试用例执行软件测试，并记录测试结果，包括手工测试和/或自动化测试；</p>
             <p>&emsp;&emsp;&emsp;&emsp;● 测试结果分析：对测试执行过程中所产生的结果输出进行分析；</p>
             <p>&emsp;&emsp;&emsp;&emsp;● 测试报告编制：整理编制并发布测试报告；</p>
-            <p>&emsp;&emsp;&emsp;&emsp;●  测试评估：对测试进行分析及评审，包括测试的收益、软件将来可能存在的风险。</p>
-            <p>&emsp;&emsp;&emsp;② 依据功能点法进行软件规模度量。应按照ISO/IEC19761、ISO/IEC20926、ISO/IEC20968、ISO/IEC24570和ISO/IEC29881等标准给出具体的独立可参照的规模方法及度量方法依据。在给出度量结果时，宜指明所采用的规模度量方法。</p>
+            <p>&emsp;&emsp;&emsp;&emsp;● 测试评估：对测试进行分析及评审，包括测试的收益、软件将来可能存在的风险。</p>
+            <p>&emsp;&emsp;&emsp;②
+              依据功能点法进行软件规模度量。应按照ISO/IEC19761、ISO/IEC20926、ISO/IEC20968、ISO/IEC24570和ISO/IEC29881等标准给出具体的独立可参照的规模方法及度量方法依据。在给出度量结果时，宜指明所采用的规模度量方法。
+            </p>
             <p>&emsp;&emsp;&emsp;&emsp; 针对最终给出的功能点数目，按照每个功能点 K 人日来给出测试成本，K 取值应为0.5~1.0。</p>
             <p>&emsp;&emsp;&emsp;&emsp; <strong>注：</strong>软件规模度量过程中所产生的费用应由送测方承担。</p>
           </div>
@@ -51,7 +74,8 @@
             <p>&emsp;&emsp;测试工具成本是为测试而购买的测试软件和测试设备的费用以及在测试过程中使用已有设备的折旧费用和维护费用。测试工具成本包括测试机构自有工具成本和/或租借工具成本：</p>
             <p>&emsp;&emsp;1）测试机构自有工具成本可按照如下步骤给出：</p>
             <p>&emsp;&emsp;&emsp;① 计算设备原价：设备原价包括外购设备的成本，包括购买原价、相关税费、运输和安装费用、服务费等。</p>
-            <p>&emsp;&emsp;&emsp;② 确定固定资产使用寿命：确定固定资产使用寿命时应考虑到预计的生产能力；预计有形损耗和无形损耗；测试工具的授权用户数、版权费、与客户需求的匹配度；法律或相关规定对固定资产使用的限制。</p>
+            <p>&emsp;&emsp;&emsp;②
+              确定固定资产使用寿命：确定固定资产使用寿命时应考虑到预计的生产能力；预计有形损耗和无形损耗；测试工具的授权用户数、版权费、与客户需求的匹配度；法律或相关规定对固定资产使用的限制。</p>
             <p>&emsp;&emsp;&emsp;③ 可选用的折旧方法包括年限平均法、工作量法等：</p>
             <p>&emsp;&emsp;&emsp;&emsp;● 年限平均法：将固定资产按预计使用年限平均计算折旧均衡地分摊到各期。</p>
             <p>&emsp;&emsp;&emsp;&emsp;&emsp;固定资产年折旧额=固定资产应计折旧额/固定资产预计使用年限</p>
@@ -88,7 +112,7 @@
           </div>
         </a-collapse-panel>
         <!-- 2.测试成本调整因子 -->
-        <a-collapse-panel  key="2" :show-arrow="false" style="background-color: white;font-size:16px">
+        <a-collapse-panel key="2" :show-arrow="false" style="background-color: white;font-size:16px">
           <template #header>
             <a-typography-title style="margin-bottom: 0" :level="4">2. 测试成本调整因子</a-typography-title>
           </template>
@@ -208,7 +232,7 @@
           </div>
         </a-collapse-panel>
         <!-- 3.软件测试成本度量流程 -->
-        <a-collapse-panel  key="3" :show-arrow="false" style="background-color: white;font-size:16px">
+        <a-collapse-panel key="3" :show-arrow="false" style="background-color: white;font-size:16px">
           <template #header>
             <a-typography-title style="margin-bottom: 0" :level="4">3. 软件测试成本度量流程</a-typography-title>
           </template>
@@ -289,7 +313,7 @@
 
     <br>
     <a-typography-title :level="3">三、实验步骤及结果</a-typography-title>
-    <a-layout-content class="my-layout-content"  style="font-size:16px">
+    <a-layout-content class="my-layout-content" style="font-size:16px">
 
       <!--第一步：计算软件测试的人工成本工作量-->
       <div>
@@ -312,7 +336,8 @@
           <a-input-number id="inputTW" v-model:value="TW" size="small" :min="0" :max="100000" />（人日）
         </a-row>
         <a-row class="son-line" style="padding-left:10px ;">
-          （b）未调整的软件测试人工工作量：UW = TW + TW * 10% + TW *20% = {{ TW }} + {{ TW }} * {{ SR_weight }} + {{ TW }} * {{ DR_weight}} = {{ UW }}（人日）
+          （b）未调整的软件测试人工工作量：UW = TW + TW * 10% + TW *20% = {{ TW }} + {{ TW }} * {{ SR_weight }} + {{ TW }} * {{
+            DR_weight }} = {{ UW }}（人日）
         </a-row>
       </div>
 
@@ -608,17 +633,22 @@
 
     <br>
     <a-typography-title :level="3">四、实验思考</a-typography-title>
-    <a-textarea v-model:value="thinking" placeholder="请在此处填写您的实验思考" allow-clear/>
-    
+    <a-textarea v-model:value="thinking" placeholder="请在此处填写您的实验思考" allow-clear />
+
   </a-layout>
-  
+
   <a-back-top />
 </template>
 
 <script lang="ts">
+import zhCN from 'ant-design-vue/es/locale/zh_CN';
 import { ECDH } from 'crypto';
 import { defineComponent, reactive, computed, ref, watch } from 'vue';
 import type { Ref } from 'vue';
+import dayjs from 'dayjs';
+import type { Dayjs } from 'dayjs';
+import 'dayjs/locale/zh-cn';
+dayjs.locale('zh-cn');
 
 //自有工具数组元素类型
 interface OTFormDataType {
@@ -644,9 +674,12 @@ export default defineComponent({
     const S = ref<number>(0);//工作量单价
     const EC = ref<number>(0);//测试环境成本
     const IDC = ref<number>(0);//间接成本
-    const thinking ="";
+    const thinking = "";
 
-    const form = reactive({
+    const reportername = ref<string>('');//报告人姓名
+    const experimentdate = ref<Dayjs>();//实验时间
+
+    const form = reactive({//测试成本因子
 
       valueC: 1.0,
       valueI: 1.0,
@@ -783,12 +816,15 @@ export default defineComponent({
       var x = Math.round(DC.value + IDC.value);
       return x;
     });
-    const activeKey1 = ref(['1','2','3']);
+    const activeKey1 = ref(['1', '2', '3']);
     watch(activeKey1, val => {
       console.log(val);
     });
 
     return {
+      locale: zhCN,
+      reportername,//报告人
+      experimentdate,//实验时间
       GBtestlink,
       UW,
       TW,
