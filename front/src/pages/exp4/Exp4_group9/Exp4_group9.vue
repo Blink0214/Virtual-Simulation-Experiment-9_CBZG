@@ -6,12 +6,18 @@
 
     <a-config-provider :locale="locale">
       <p style="line-height:200%;">
-        课程名称：软件工程经济学<br>
-        课号：420279<br>
-        实验项目名称：软件测试成本度量实验<br>
-        实验时间：<a-date-picker v-model:value="experimentdate" style="width:150px;padding-left:3px;padding-right:3px;"
-          placeholder="点击选择实验时间" /><br>
-        实验报告人： <a-input v-model:value="reportername" placeholder="点击输入报告人姓名" size="small" style="width:150px ;"></a-input>
+        <a-row justify="center">
+          <a-col span="6">课程名称：软件工程经济学</a-col>
+          <a-col span="6">课号：420279</a-col>
+          <a-col span="6">实验项目名称：软件测试成本度量实验</a-col>
+        </a-row>
+        <a-row justify="center">
+          <a-col span="6">实验时间：<a-date-picker v-model:value="experimentdate" style="width:150px;padding-left:3px;padding-right:3px;"
+          placeholder="点击选择实验时间" /></a-col>
+          <a-col span="6">实验报告人： <a-input v-model:value="reportername" placeholder="点击输入报告人姓名" size="small" style="width:150px ;"></a-input>
+          </a-col>
+          <a-col span="6"></a-col>
+        </a-row>
       </p>
     </a-config-provider>
 
@@ -24,7 +30,6 @@
       <p>&emsp;&emsp;3.本实验为课内设计性实验项目，实验学时 1 学时，完成实验报告 1 学时。</p>
     </div>
 
-    <br>
     <a-typography-title :level="3">二、实验原理</a-typography-title>
     <div>
       <a-collapse v-model:activeKey="activeKey1" :bordered="false" style="width:99%">
