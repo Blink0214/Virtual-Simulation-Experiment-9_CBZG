@@ -44,7 +44,7 @@
               <template #header>
                 <h3 style="font-weight:600;">1.1 直接成本</h3>
               </template>
-              <a-collapse default-active-key="1-1-1" :bordered="false">
+              <a-collapse default-active-key="1-1-1" :bordered="false" style="background-color:white;">
                 <a-collapse-panel key="1-1-1">
                   <template #header>
                     <h3 style="font-weight:600;">1.1.1 测试环境成本</h3>
@@ -56,7 +56,7 @@
                   <p>&emsp;&emsp;——开发测试所需要的软件环境的成本。</p>
                 </a-collapse-panel>
               </a-collapse>
-              <a-collapse default-active-key="1-1-2" :bordered="false">
+              <a-collapse default-active-key="1-1-2" :bordered="false" style="background-color:white;">
                 <a-collapse-panel key="1-1-2">
                   <template #header>
                     <h3 style="font-weight:600;">1.1.2 测试人工成本</h3>
@@ -87,7 +87,7 @@
                   <p>&emsp;&emsp;&emsp;&emsp; <strong>注：</strong>软件规模度量过程中所产生的费用应由送测方承担。</p>
                 </a-collapse-panel>
               </a-collapse>
-              <a-collapse default-active-key="1-1-3" :bordered="false">
+              <a-collapse default-active-key="1-1-3" :bordered="false" style="background-color:white;">
                 <a-collapse-panel key="1-1-3">
                   <template #header>
                     <h3 style="font-weight:600;">1.1.3 测试工具成本</h3>
@@ -116,7 +116,7 @@
               <template #header>
                 <h3 style="font-weight:600;">1.2 间接成本</h3>
               </template>
-              <a-collapse default-active-key="1-2-1" :bordered="false">
+              <a-collapse default-active-key="1-2-1" :bordered="false" style="background-color:white;">
                 <a-collapse-panel key="1-2-1">
                   <template #header>
                     <h3 style="font-weight:600;">1.2.1 概述</h3>
@@ -124,7 +124,7 @@
                   <p>&emsp;&emsp;软件测试间接成本包括办公成本和管理成本。</p>
                 </a-collapse-panel>
               </a-collapse>
-              <a-collapse default-active-key="1-2-2" :bordered="false">
+              <a-collapse default-active-key="1-2-2" :bordered="false" style="background-color:white;">
                 <a-collapse-panel key="1-2-2">
                   <template #header>
                     <h3 style="font-weight:600;">1.2.2 办公成本</h3>
@@ -138,7 +138,7 @@
                   <p>&emsp;&emsp;<strong>注：</strong>办公成本可以包括以上所述的各项产生的费用，但不限于以上几种，本标准的使用者可以对本标准中列出的各项进行增加、删除和修改。</p>
                 </a-collapse-panel>
               </a-collapse>
-              <a-collapse default-active-key="1-2-3" :bordered="false">
+              <a-collapse default-active-key="1-2-3" :bordered="false" style="background-color:white;">
                 <a-collapse-panel key="1-2-3">
                   <template #header>
                     <h3 style="font-weight:600;">1.2.3 管理成本</h3>
@@ -252,22 +252,22 @@
                 </a-row>
                 <a-row justify="center" style="text-align:center;height:30px;line-height: 30px;">
                   <a-col style="border: 0.5px solid #333" :span="5">风险程度</a-col>
-                  <a-col style="border: 0.5px solid #333" :span="8">描述</a-col>
+                  <a-col style="border: 0.5px solid #333" :span="9">描述</a-col>
                   <a-col style="border: 0.5px solid #333" :span="5">调整因子取值范围</a-col>
                 </a-row>
                 <a-row justify="center" style="height:30px;line-height: 30px;">
                   <a-col :span="5" style="text-align:center;border: 0.5px solid #333">低</a-col>
-                  <a-col :span="8" style="border: 0.5px solid #333">&emsp;没有出现上述任何一个特性</a-col>
+                  <a-col :span="9" style="border: 0.5px solid #333">&emsp;没有出现上述任何一个特性</a-col>
                   <a-col :span="5" style="text-align:center;border: 0.5px solid #333">1.0</a-col>
                 </a-row>
                 <a-row justify="center" style="height:30px;line-height: 30px;">
                   <a-col :span="5" style="text-align:center;border: 0.5px solid #333">中</a-col>
-                  <a-col :span="8" style="border: 0.5px solid #333">&emsp;出现上述特性2）、3）、4）中的一个</a-col>
+                  <a-col :span="9" style="border: 0.5px solid #333">&emsp;出现上述特性2）、3）、4）中的一个</a-col>
                   <a-col :span="5" style="text-align:center;border: 0.5px solid #333">1.1~1.2</a-col>
                 </a-row>
                 <a-row justify="center" style="height:30px;line-height: 30px;">
                   <a-col :span="5" style="text-align:center;border: 0.5px solid #333">高</a-col>
-                  <a-col :span="8" style="border: 0.5px solid #333">&emsp;出现上述特性1）,或者2）、3）、4）中的两个或两个以上</a-col>
+                  <a-col :span="9" style="border: 0.5px solid #333">&emsp;出现上述特性1）,或者2）、3）、4）中的两个或两个以上</a-col>
                   <a-col :span="5" style="text-align:center;border: 0.5px solid #333">1.3~1.5</a-col>
                 </a-row>
               </div>
@@ -748,7 +748,7 @@
     <!--a-layout-footer class="my-layout-footer">实验结束！</!--a-layout-footer-->
 
     <a-typography-title :level="3">四、实验思考</a-typography-title>
-    <a-textarea v-model:value="thinking" placeholder="请在此处填写您的实验思考" allow-clear size="large"/>
+    <a-textarea v-model:value="thinking" placeholder="请在此处填写您的实验思考" allow-clear size="large" :rows="6"/>
 
   </a-layout>
 
