@@ -6,7 +6,7 @@
         <a-input
           v-model:value="form.username"
           autocomplete="new-username"
-          placeholder="请输入用户名或邮箱: admin"
+          placeholder="请输入用户名或邮箱"
           class="login-input"
         />
       </a-form-item>
@@ -14,7 +14,7 @@
         <a-input
           v-model:value="form.password"
           autocomplete="new-password"
-          placeholder="请输入登录密码: 888888"
+          placeholder="请输入登录密码"
           class="login-input"
           type="password"
         />
@@ -35,7 +35,6 @@
   import { reactive, ref, onMounted } from 'vue';
   import { useAccountStore } from '@/store';
   import useThemeStore from 'stepin/es/theme-editor/store';
-import router from '@/router';
 
   export interface LoginFormProps {
     username: string;
@@ -62,16 +61,12 @@ import router from '@/router';
 
   const accountStore = useAccountStore();
   function login(params: LoginFormProps) {
-    console.log(params)
+    // console.log(params)
     loading.value = true;
     accountStore
       .login(params.username, params.password)
       .then((res) => {
-        // console.log('success')
-        // console.log(params)
-
         emit('success', params);
-
       })
       .catch((e) => {
         emit('failure', e.message, params);

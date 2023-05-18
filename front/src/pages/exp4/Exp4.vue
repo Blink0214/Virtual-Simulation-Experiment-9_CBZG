@@ -5,14 +5,14 @@
     <RouterLink to="/exp4/group9">测试成本估算实验</!--RouterLink>
   </!--li-->
   <div>
-    <RouterView/>
+    <RouterView />
   </div>
 </template>
 
 <script lang="ts">
-  export default {
-    name: 'Exp4',
-  };
+export default {
+  name: 'Exp4',
+};
 </script>
 
 <style scoped lang="less"></style>
