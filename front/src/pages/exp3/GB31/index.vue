@@ -640,7 +640,7 @@ export default {
                 <a-row class="son-line" style="padding-left:10px ;">（a）OT=（固定资产应计折旧额 / 固定资产预计使用年限+维护费用）/200*工具实际使用时间</a-row>
                 <a-row class="son-line" style="padding-left:10px ;">（b）RT= 租赁费用 * 租赁期限</a-row>
 
-                <div style="width:80%;text-align: center;margin: 0 auto">
+                <div style="width:85%;text-align: center;margin: 0 auto">
                     <a-row style="border: 1px solid lightgray;height:50px; border-radius:10px 10px 0px 0px;line-height: 50px;"
                         justify="space-around" align="middle">
                         <a-col :span="24" style="font-weight: 600;">软件测试工具成本</a-col>
