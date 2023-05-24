@@ -1,44 +1,31 @@
-<!-- <template>
-    内容
-</template>
-
-
-
-<script lang="ts">
-import { Document } from '@element-plus/icons-vue'
-import { defineComponent } from 'vue'
-export default {
-    name: 'DONGTAITOUZI',
-}
-</script >
-
-<style scoped></style>  -->
-
-
 <template>
-    <a-layout style="background-color:white;">
-
-        <a-layout-header class="my-layout-header">软件测试成本度量实验</a-layout-header>
-        <!-- <div @click="jumpToGB">软件测试成本度量规范（国标）</div> -->
-        <a-row justify="end" > 
+    <a-layout style="background-color:white;padding:0.5%;">
+        <a-row type="flex" class="title" align="bottom">
+            <a-col :span="8">
+                <a-typography-title class="title-word" :level="2">软件测试成本度量实验</a-typography-title>
+            </a-col>
+            <a-col :span="10">
+            </a-col>
             <a-col :span="3">
-                <a-button  style="width:9vw;" type="primary" size="small" ghost shape="round" @click="jumpToGB">
+                <a-button class="title-btn" type="primary" size="small" shape="round" @click="jumpToGB">
                     <template #icon>
                         <eye-outlined />
-                    </template>实验指导书
+                    </template>
+                    <span class="title-btn-word">实验指导书</span>
                 </a-button>
             </a-col>
-            &emsp;
+
             <a-col :span="3">
-                <a-button  style="width:9vw;" type="primary" size="small" ghost shape="round">
+                <a-button class="title-btn" type="primary" size="small" shape="round">
                     <template #icon>
                         <DownloadOutlined />
-                    </template>报告模板下载
+                    </template>
+                    <span class="title-btn-word">报告模板下载</span>
                 </a-button>
             </a-col>
         </a-row>
-        <br/>
-        <a-config-provider :locale="locale">
+        <a-divider style="background-color: rgb(221, 218, 218)" />
+        <!-- <a-config-provider :locale="locale">
             <p style="line-height:200%;font-size: 16px;">
                 <a-row justify="center">
                     <a-col span="6">课程名称：软件工程经济学</a-col>
@@ -57,7 +44,7 @@ export default {
                     <a-col span="6"></a-col>
                 </a-row>
             </p>
-        </a-config-provider>
+        </a-config-provider> -->
 
         <a-typography-title :level="3">一、实验目的</a-typography-title>
 
@@ -139,9 +126,9 @@ export default {
                                     </p>
                                     <p>&emsp;&emsp;&emsp;③ 可选用的折旧方法包括年限平均法、工作量法等：</p>
                                     <p>&emsp;&emsp;&emsp;&emsp;● 年限平均法：将固定资产按预计使用年限平均计算折旧均衡地分摊到各期。</p>
-                                    <p>&emsp;&emsp;&emsp;&emsp;&emsp;固定资产年折旧额=固定资产应计折旧额/固定资产预计使用年限</p>
+                                    <p>&emsp;&emsp;&emsp;&emsp;&emsp;固定资产年折旧额=固定资产原值/固定资产预计使用年限</p>
                                     <p>&emsp;&emsp;&emsp;&emsp;● 工作量法：按照固定资产预计可完成的工作量计算折旧额。</p>
-                                    <p>&emsp;&emsp;&emsp;&emsp;&emsp;单位工作量折旧额=固定资产应计折旧额/预计总工作量</p>
+                                    <p>&emsp;&emsp;&emsp;&emsp;&emsp;单位工作量折旧额=固定资产原值/预计总工作量</p>
                                     <p>&emsp;&emsp;&emsp;④ 确定测试工具每年的维护费。</p>
                                     <p>&emsp;&emsp;&emsp;⑤ 以每年200个工作日计，按照具体的测试工期，分摊每年的折旧费和维护费。</p>
                                     <p>&emsp;&emsp;2）租借工具成本按照具体租借费用另外计算。</p>
@@ -466,7 +453,7 @@ export default {
         </div>
 
         <br>
-        <a-typography-title :level="3">三、实验步骤及结果</a-typography-title>
+        <a-typography-title :level="3">三、实验步骤</a-typography-title>
         <a-layout-content class="my-layout-content" style="font-size:16px">
 
             <!--第一步：计算软件测试的人工成本工作量-->
@@ -619,9 +606,9 @@ export default {
             OT———自有工具成本，参见4.1.2进行度量，单位为元; 
             RT———租借工具成本，依据租借费用另行估计，单位为元。 
             年限平均法：将固定资产按预计使用年限平均计算折旧均衡地分摊到各期。 
-            固定资产年折旧额 = 固定资产应计折旧额 / 固定资产预计使用年限
+            固定资产年折旧额 = 固定资产原值 / 固定资产预计使用年限
             测试工具成本=固定资产年折旧额+维护费用
-            OT=（固定资产应计折旧额 / 固定资产预计使用年限+维护费用）/200*工具实际使用时间
+            OT=（固定资产原值 / 固定资产预计使用年限+维护费用）/200*工具实际使用时间
             OT=(depreciation/usefulLife + maintenanceCosts)/200 * actualUsageTime-->
             <div style="margin-left:1vw;">
                 <a-typography-title :level="5">步骤四：软件测试的工具成本计算</a-typography-title>
@@ -637,11 +624,12 @@ export default {
                     </a-popover>
                 </a-row>
                 <a-row class="son-line">（2）计算过程：年限平均法——将固定资产按预计使用年限平均计算折旧均衡地分摊到各期。</a-row>
-                <a-row class="son-line" style="padding-left:10px ;">（a）OT=（固定资产应计折旧额 / 固定资产预计使用年限+维护费用）/200*工具实际使用时间</a-row>
+                <a-row class="son-line" style="padding-left:10px ;">（a）OT=（固定资产原值 / 固定资产预计使用年限+维护费用）/200*工具实际使用时间</a-row>
                 <a-row class="son-line" style="padding-left:10px ;">（b）RT= 租赁费用 * 租赁期限</a-row>
 
                 <div style="width:85%;text-align: center;margin: 0 auto">
-                    <a-row style="border: 1px solid lightgray;height:50px; border-radius:10px 10px 0px 0px;line-height: 50px;"
+                    <a-row
+                        style="border: 1px solid lightgray;height:50px; border-radius:10px 10px 0px 0px;line-height: 50px;"
                         justify="space-around" align="middle">
                         <a-col :span="24" style="font-weight: 600;">软件测试工具成本</a-col>
                     </a-row>
@@ -651,8 +639,8 @@ export default {
                             自有工具成本(OT)
                         </a-col>
                         <a-col :span="16">
-                            <a-row v-for="(item, index) in OTForm" style="border: 1px solid lightgray;" justify="space-around"
-                                align="middle">
+                            <a-row v-for="(item, index) in OTForm" style="border: 1px solid lightgray;"
+                                justify="space-around" align="middle">
                                 <a-col :span="3">
                                     <a-row justify="space-around" align="middle">
                                         自有工具{{ index + 1 }}
@@ -664,17 +652,18 @@ export default {
                                 </a-col>
                                 <a-col :span="21">
                                     <a-descriptions :model="item" bordered size=small>
-                                        <a-descriptions-item label="固定资产应计折旧额" :span="3" style="width:65%;">
-                                            <a-input-number v-model:value="item.depreciation" :min="0" />&emsp;&emsp;&nbsp;元
+                                        <a-descriptions-item label="固定资产原值" :span="3" style="width:65%;">
+                                            <a-input-number v-model:value="item.depreciation" :min="0" />&emsp;&nbsp;千元
                                         </a-descriptions-item>
                                         <a-descriptions-item label="固定资产预计使用年限" :span="3">
                                             <a-input-number v-model:value="item.usefulLife" :min="0" />&emsp;&emsp;&nbsp;年
                                         </a-descriptions-item>
                                         <a-descriptions-item label="维护费用" :span="3">
-                                            <a-input-number v-model:value="item.maintenanceCosts" :min="0" />&emsp;&emsp;&nbsp;元
+                                            <a-input-number v-model:value="item.maintenanceCosts" :min="0" />&emsp;&nbsp;千元
                                         </a-descriptions-item>
                                         <a-descriptions-item label="工具实际使用时间（工具使用每年按200个工作日算）" :span="3">
-                                            <a-input-number v-model:value="item.actualUsageTime" :min="0" />&emsp;&emsp;&nbsp;天
+                                            <a-input-number v-model:value="item.actualUsageTime"
+                                                :min="0" />&emsp;&emsp;&nbsp;天
                                         </a-descriptions-item>
                                     </a-descriptions>
                                 </a-col>
@@ -685,8 +674,8 @@ export default {
                             </a-row>
                         </a-col>
                         <a-col :span="3">
-                            <a-statistic v-if="OT != -1" title="总计" :value=OT :value-style="{ fontSize: '20px' }" :precision="2"
-                                suffix="元"></a-statistic>
+                            <a-statistic v-if="OT != -1" title="总计" :value=OT :value-style="{ fontSize: '20px' }"
+                                :precision="2" suffix="元"></a-statistic>
                             <a-statistic v-if="OT == -1" :value='0' :value-style="{ fontSize: '20px', color: 'red' }"
                                 :precision="2">
                                 <template #title>
@@ -706,8 +695,8 @@ export default {
                             租借工具成本(RT)
                         </a-col>
                         <a-col :span="16">
-                            <a-row v-for="(item, index) in RTForm" style="border: 1px solid lightgray;" justify="space-around"
-                                align="middle">
+                            <a-row v-for="(item, index) in RTForm" style="border: 1px solid lightgray;"
+                                justify="space-around" align="middle">
                                 <a-col :span="3">
                                     <a-row justify="space-around" align="middle">
                                         租借工具{{ index + 1 }}
@@ -738,7 +727,8 @@ export default {
                                 suffix="元"></a-statistic>
                         </a-col>
                     </a-row>
-                    <a-row style="border: 1px solid lightgray;border-top:none;height:100px; border-radius:0px 0px 10px 10px;"
+                    <a-row
+                        style="border: 1px solid lightgray;border-top:none;height:100px; border-radius:0px 0px 10px 10px;"
                         justify="space-around" align="middle">
                         <a-statistic title="软件测试工具成本(IC)=OT+RT" :precision="2" :value-style="{ fontSize: '20px' }" :value=IC
                             suffix="元"></a-statistic>
@@ -804,18 +794,38 @@ export default {
         </a-layout-content>
         <!--a-layout-footer class="my-layout-footer">实验结束！</!--a-layout-footer-->
 
-        <a-typography-title :level="3">四、实验思考</a-typography-title>
-        <a-textarea v-model:value="thinking" placeholder="请在此处填写您的实验思考" allow-clear size="large" :rows="6" />
-        <!-- <br/>
-        <a-row justify="end" > 
+        <a-typography-title :level="3">四、实验结果</a-typography-title>
+        <a-result>
+            <template #title>
+                <span style="font-size:17px;color:grey;">通过本实验，最终计算得到的软件测试成本为：</span>
+            </template>
+            <template #icon>
+                <smile-twoTone style="font-size:9vh;"/>
+            </template>
+            <template #extra>
+                <a-statistic :value=STC :value-style="{ fontSize: '24px' }" :precision="2" suffix="元"></a-statistic>
+            </template>
+        </a-result>
+
+
+        <a-typography-title :level="3">五、实验小结与心得</a-typography-title>
+        <a-textarea v-model:value="thinking" placeholder="请在此处填写您的实验小结与心得" allow-clear size="large" :rows="6" />
+        <br/>
+
+        <a-row justify="end"> 
             <a-col :span="3">
-                <a-button  style="width:9vw;" type="primary" shape="round">
-                    <template #icon>
-                        <upload-outlined />
-                    </template>提交实验报告
-                </a-button>
+                <a-upload
+                    accept=".pdf"
+                >
+                    <a-button class="title-btn" type="primary" size="small"  shape="round">
+                        <template #icon>
+                            <upload-outlined />
+                        </template>
+                        <span class="title-btn-word">提交实验报告</span>
+                    </a-button>
+                </a-upload>
             </a-col>
-        </a-row> -->
+        </a-row>
     </a-layout>
 
     <a-back-top />
@@ -925,7 +935,7 @@ export default defineComponent({
         const OT = computed(() => {
             var x = 0;
             for (var i = 0; i < OTForm.value.length; i++) {
-                x += Math.round(((OTForm.value[i].depreciation / OTForm.value[i].usefulLife + OTForm.value[i].maintenanceCosts) / 200) *
+                x += Math.round(((OTForm.value[i].depreciation * 1000 / OTForm.value[i].usefulLife + OTForm.value[i].maintenanceCosts * 1000) / 200) *
                     OTForm.value[i].actualUsageTime);
             }
             if (!x && x != 0 || x == Infinity) {
@@ -1044,21 +1054,27 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
-// .GBlink {
-//     margin-left: auto;
-//     color: #1896ff;
-//     text-decoration: underline;
-//     cursor: pointer;
-// }
-
-.my-layout-header {
-    text-align: center;
-    font-size: 26px;
-    font-weight: bold;
+.title {
+    padding-top: 2vh;
 }
 
-// .my-layout-content{
-// }
+.title-word {
+    margin: 0;
+    height: 4vh;
+    line-height: 4vh;
+}
+
+.title-btn {
+    width: 9vw;
+    height: 3.5vh;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.title-btn-word {
+    font-size: 2vh;
+}
+
 .my-layout-footer {
     text-align: center;
     font-size: large;
